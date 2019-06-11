@@ -24,10 +24,10 @@ public class Goal {
 	public LocalDate updatedAt;
 	
 	@DBRef
-	public TransactionGoal transactionGoal; 
+	public List<TransactionGoal> transactionGoals; 
 	
 	public Goal(String id, String title, double total, double saved, double recorrence, LocalDate createdAt,
-			LocalDate updatedAt, TransactionGoal transactionGoal) {
+			LocalDate updatedAt, List<TransactionGoal> transactionGoals) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -36,7 +36,7 @@ public class Goal {
 		this.recorrence = recorrence;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		this.transactionGoal = transactionGoal;
+		this.transactionGoals = transactionGoals;
 	}
 
 	public Goal() {
@@ -99,12 +99,12 @@ public class Goal {
 		this.updatedAt = updatedAt;
 	}
 
-	public TransactionGoal getTransactionGoal() {
-		return transactionGoal;
+	public List<TransactionGoal> getTransactionGoals() {
+		return transactionGoals;
 	}
 
-	public void setTransactionGoal(TransactionGoal transactionGoal) {
-		this.transactionGoal = transactionGoal;
+	public void setTransactionGoal(List<TransactionGoal> transactionGoals) {
+		this.transactionGoals = transactionGoals;
 	}
 	
 }

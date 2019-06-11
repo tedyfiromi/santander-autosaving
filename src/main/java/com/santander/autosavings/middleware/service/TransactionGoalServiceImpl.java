@@ -1,8 +1,13 @@
 package com.santander.autosavings.middleware.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.connection.Stream;
 import com.santander.autosavings.middleware.model.Goal;
 import com.santander.autosavings.middleware.model.TransactionGoal;
 import com.santander.autosavings.middleware.repository.TransactionGoalRepository;
@@ -19,17 +24,25 @@ public class TransactionGoalServiceImpl implements TransactionGoalService {
 	@Override
 	public TransactionGoal addMoney(String account, String idGoal, double addValue) {
 		
-		if (amountIsAvailable(addValue, account)) {	
+		if (amountIsAvailable(addValue, account)) {			
 			
-			Goal goal = goalService.getGoalById(idGoal);
+			Goal goal = goalService.getGoalById(idGoal);	
 			
-			TransactionGoal transact = transactGoalRepository.save(new TransactionGoal(account, addValue, goal));
+			List<TransactionGoal> listTransactions;
+			TransactionGoal transact = new TransactionGoal();
 			
-			goal.setTransactionGoal(transact);
+			listTransactions = listTransactionsNeverNull(goal.getTransactionGoals());	
+			
+			transact.setAccount(account);
+			transact.setValue(addValue);
+			
+			TransactionGoal transaction = transactGoalRepository.save(transact);			
+			listTransactions.add(transaction);			
+			goal.setTransactionGoal(listTransactions);			
 			
 			goalService.updateGoal(goal);
 			
-			return transact;
+			return transaction;
 		}
 		return null;
 	}
@@ -43,6 +56,10 @@ public class TransactionGoalServiceImpl implements TransactionGoalService {
 	
 	public boolean amountIsAvailable(double addValue, String account) {		
 		return totalAmount(account) > addValue;
+	}
+	
+	public List<TransactionGoal> listTransactionsNeverNull(List<TransactionGoal> listTransactions) {
+		return listTransactions == null?new ArrayList<>():listTransactions;
 	}
 
 }

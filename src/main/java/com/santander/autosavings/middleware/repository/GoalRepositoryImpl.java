@@ -42,4 +42,9 @@ public class GoalRepositoryImpl implements GoalRepository {
 		return mongoTemplate.findById(idGoal, Goal.class);
 	}
 
+	@Override
+	public Goal save(Goal goal) {
+		return mongoTemplate.save(goal);
+	}
+
 }

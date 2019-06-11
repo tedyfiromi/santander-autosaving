@@ -11,20 +11,19 @@ public class TransactionGoal {
 	
 	@Id
 	public String idTransactionGoal;
+	public String account;
 	public double value;
-	
-	@DBRef
-	public Goal goal;	
-	
+		
 	
 	public TransactionGoal() {		
 	}
 
-	public TransactionGoal(String idTransaction, double value, Goal goal) {
+	public TransactionGoal(String idTransaction, String account, double value) {
 		super();
 		this.idTransactionGoal = idTransaction;
 		this.value = value;
-		this.goal = goal;
+		this.account = account;
+
 	}
 	
 	public String getIdTransactionGoal() {
@@ -43,12 +42,14 @@ public class TransactionGoal {
 		this.value = value;
 	}
 
-	public Goal getGoal() {
-		return goal;
+	public String getAccount() {
+		return account;
 	}
 
-	public void setGoal(Goal goal) {
-		this.goal = goal;
+	public void setAccount(String account) {
+		this.account = account;
 	}
+	
+	
 
 }

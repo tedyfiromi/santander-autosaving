@@ -16,4 +16,6 @@ public interface GoalRepository {
 
 	public Goal getGoalById(String idGoal);
 
+	public Goal save(Goal goal);
+
 }

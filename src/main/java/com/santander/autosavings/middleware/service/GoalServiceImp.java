@@ -26,8 +26,7 @@ public class GoalServiceImp implements GoalService{
 
 	@Override
 	public Goal updateGoal(Goal goal) {
-		// TODO Auto-generated method stub
-		return null;
+		return goalRepository.save(goal);
 	}
 
 	@Override
@@ -39,6 +38,11 @@ public class GoalServiceImp implements GoalService{
 	@Override
 	public Goal getGoalById(String idGoal) {
 		return goalRepository.getGoalById(idGoal);
+	}
+
+	@Override
+	public Goal save(Goal goal) {
+		return goalRepository.save(goal);
 	}
 
 }
