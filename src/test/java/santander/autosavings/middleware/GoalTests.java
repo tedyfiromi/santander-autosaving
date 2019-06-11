@@ -43,12 +43,14 @@ public class GoalTests {
 		MockitoAnnotations.initMocks(this);
 		mockGoalService = mock(GoalService.class);
 		
-		transactionsFrance.add(new TransactionGoal("5cf58d24d817ae5a10a7233f", 80.00));			
-		transactionsItaly.add(new TransactionGoal("5cf6c1c5d817ae5e28d094f7", 75.00));		
+		goalFrance = new Goal("5cf58d24d817ae5a10a78b3f", "France", 2000.0, 150.0, 0.0, null, null);
+		goalItaly = new Goal("5cf6c1c5d817ae5e28d094fc", "Italy", 1000.0, 200.0, 0.0, null, null);
+	
+		transactionsFrance.add(new TransactionGoal("5cf58d24d817ae5a10a7233f", 80.00, goalFrance));			
+		transactionsItaly.add(new TransactionGoal("5cf6c1c5d817ae5e28d094f7", 75.00, goalItaly));	
 		
-		goalFrance = new Goal("5cf58d24d817ae5a10a78b3f", "France", 2000.0, 150.0, 0.0, null, null, transactionsFrance);
-		goalItaly = new Goal("5cf6c1c5d817ae5e28d094fc", "Italy", 1000.0, 200.0, 0.0, null, null, transactionsItaly);
-		
+		listGoals.add(goalFrance);
+		listGoals.add(goalItaly);
 		
 		listGoals.add(goalFrance);
 		listGoals.add(goalItaly);

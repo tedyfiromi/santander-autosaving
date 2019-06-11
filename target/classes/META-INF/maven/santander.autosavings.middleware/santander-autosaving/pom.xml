@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>santander.autosavings.middleware</groupId>
-	<artifactId>AutoSavingMiddleware</artifactId>
+	<artifactId>santander-autosaving</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AutoSavingMiddleware</name>
+	<name>santander-autosaving</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
