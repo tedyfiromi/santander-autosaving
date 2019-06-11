@@ -12,16 +12,24 @@ public class TransactionGoalServiceImpl implements TransactionGoalService {
 
 	@Autowired
 	private TransactionGoalRepository transactGoalRepository;
+	
+	@Autowired
+	private GoalService goalService;
 
 	@Override
-	public TransactionGoal save(TransactionGoal transactionGoal) {
-		return transactGoalRepository.save(transactionGoal);
-	}
-
-	public TransactionGoal addMoney(String account, Goal goal, double addValue) {
+	public TransactionGoal addMoney(String account, String idGoal, double addValue) {
 		
-		if (amountIsAvailable(addValue, account)) {			
-			return transactGoalRepository.save(new TransactionGoal(goal.getId(), addValue, goal));
+		if (amountIsAvailable(addValue, account)) {	
+			
+			Goal goal = goalService.getGoalById(idGoal);
+			
+			TransactionGoal transact = transactGoalRepository.save(new TransactionGoal(account, addValue, goal));
+			
+			goal.setTransactionGoal(transact);
+			
+			goalService.updateGoal(goal);
+			
+			return transact;
 		}
 		return null;
 	}

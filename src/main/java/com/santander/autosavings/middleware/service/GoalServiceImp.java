@@ -36,4 +36,9 @@ public class GoalServiceImp implements GoalService{
 		
 	}
 
+	@Override
+	public Goal getGoalById(String idGoal) {
+		return goalRepository.getGoalById(idGoal);
+	}
+
 }

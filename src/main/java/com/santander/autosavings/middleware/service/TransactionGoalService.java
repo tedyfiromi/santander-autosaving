@@ -4,6 +4,6 @@ import com.santander.autosavings.middleware.model.TransactionGoal;
 
 public interface TransactionGoalService {
 	
-	public TransactionGoal save(TransactionGoal transactionGoal);
+	public TransactionGoal addMoney(String account, String idGoal, double addValue);
 
 }

@@ -23,8 +23,11 @@ public class Goal {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public LocalDate updatedAt;
 	
+	@DBRef
+	public TransactionGoal transactionGoal; 
+	
 	public Goal(String id, String title, double total, double saved, double recorrence, LocalDate createdAt,
-			LocalDate updatedAt) {
+			LocalDate updatedAt, TransactionGoal transactionGoal) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -33,6 +36,7 @@ public class Goal {
 		this.recorrence = recorrence;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.transactionGoal = transactionGoal;
 	}
 
 	public Goal() {
@@ -95,11 +99,12 @@ public class Goal {
 		this.updatedAt = updatedAt;
 	}
 
-	@Override
-	public String toString() {
-		return "Goal [id=" + id + ", title=" + title + ", total=" + total + ", saved=" + saved + ", recorrence="
-				+ recorrence + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	public TransactionGoal getTransactionGoal() {
+		return transactionGoal;
 	}
 
+	public void setTransactionGoal(TransactionGoal transactionGoal) {
+		this.transactionGoal = transactionGoal;
+	}
 	
 }

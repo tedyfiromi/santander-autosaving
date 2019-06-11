@@ -15,4 +15,6 @@ public interface GoalService {
 	
 	public void deleteGoal(Long idGoal);
 
+	public Goal getGoalById(String idGoal);
+
 }

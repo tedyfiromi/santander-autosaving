@@ -14,4 +14,6 @@ public interface GoalRepository {
 	
 	public void delete(Long idGoal);
 
+	public Goal getGoalById(String idGoal);
+
 }
