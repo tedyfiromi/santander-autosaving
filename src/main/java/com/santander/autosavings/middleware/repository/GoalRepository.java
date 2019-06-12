@@ -1,21 +1,12 @@
 package com.santander.autosavings.middleware.repository;
 
-import java.util.List;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import com.santander.autosavings.middleware.model.Goal;
 
-public interface GoalRepository {
-	
-	public List<Goal> listGoals();
-	
-	public Goal insert(Goal goal);
-	
-	public Goal update(Goal goal);
-	
-	public void delete(Long idGoal);
+@Repository
+public interface GoalRepository extends MongoRepository<Goal, String>{
 
-	public Goal getGoalById(String idGoal);
-
-	public Goal save(Goal goal);
 
 }

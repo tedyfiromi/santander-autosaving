@@ -40,7 +40,7 @@ public class GoalsController {
 	        @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 	        @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")})
     public ResponseEntity<List<Goal>> getListGoals() {
-        return ResponseEntity.ok(goalService.getListGoal());
+        return ResponseEntity.ok(goalService.getListAllGoals());
     }
 	
 	@ApiOperation(value="Create Goal", response=String.class, notes="This operation be create a new goal")
@@ -54,7 +54,7 @@ public class GoalsController {
 		
 		Response<Goal> response = new Response<Goal>();
 		
-		response.setData(goalService.createGoal(goal));
+		response.setData(goalService.insertGoal(goal));
 				
 		return ResponseEntity.ok(response);
 	}

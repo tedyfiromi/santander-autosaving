@@ -1,5 +1,6 @@
 package com.santander.autosavings.middleware.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Document
-public class Goal {
+public class Goal implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	public String id;
 	public String title;

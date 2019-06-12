@@ -1,14 +1,17 @@
 package com.santander.autosavings.middleware.model;
 
-import java.util.List;
+import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class TransactionGoal {
+public class TransactionGoal implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	public String idTransactionGoal;
 	public String account;
