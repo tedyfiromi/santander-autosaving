@@ -49,7 +49,7 @@ public class GoalsController {
 		return ResponseEntity.ok(response);
 	}
 	
-	@ApiOperation(value="Get Goal By Id", response=String.class, notes="This operation find Goal by idGoal")
+	@ApiOperation(value="Goal By Id", response=String.class, notes="This operation find Goal by idGoal")
 	@GetMapping(value = UrlRest.FIND_GOAL_BY_ID)
 	public ResponseEntity<Goal> getGoalById(@PathVariable("id") String id) {
 		return ResponseEntity.ok(goalService.findGoalById(id));
