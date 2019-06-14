@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\java\com\santander\autosavings\middleware\model\Goal.java
 C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\java\com\santander\autosavings\middleware\controller\TransactionGoalController.java
 C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\java\com\santander\autosavings\middleware\repository\GoalRepository.java
@@ -13,3 +14,20 @@ C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\
 C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\java\com\santander\autosavings\middleware\utils\UrlRest.java
 C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\java\com\santander\autosavings\middleware\service\MoneyManagerService.java
 C:\desenvolvimento\projects-santander\santander\autosaving-transaction\src\main\java\com\santander\autosavings\middleware\service\TransactionGoalService.java
+=======
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\controller\TransactionGoalController.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\model\Scheduler.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\service\GoalService.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\Application.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\service\TransactionGoalService.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\model\TransactionGoal.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\utils\UrlRest.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\response\Response.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\repository\GoalRepository.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\service\MoneyManagerService.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\controller\GoalsController.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\repository\TransactionGoalRepository.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\service\exception\ObjectNotFoundException.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\SwaggerConfigure.java
+C:\desenvolvimento\projects-santander\santander\autosaving-goal\src\main\java\com\santander\autosavings\middleware\model\Goal.java
+>>>>>>> 97a84b3d9bbdbdf9f922d5c12380451ba5187358

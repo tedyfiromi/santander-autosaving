@@ -8,14 +8,8 @@
 		<artifactId>autosaving</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-<<<<<<< HEAD
-	<artifactId>autosaving-transaction</artifactId>
-	<name>santander-autosaving</name>
-	<description>Demo project for Spring Boot</description>
-=======
 	<artifactId>autosaving-goal</artifactId>
 	<name>santander-autosaving</name>
 	<description>Microservice Goal</description>
->>>>>>> 97a84b3d9bbdbdf9f922d5c12380451ba5187358
 
 </project>

@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: santander.autosavings.middleware.GoalTests
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 s - in santander.autosavings.middleware.GoalTests
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.564 s - in santander.autosavings.middleware.GoalTests
+>>>>>>> 97a84b3d9bbdbdf9f922d5c12380451ba5187358
