@@ -2,6 +2,7 @@ package com.santander.autosavings.middleware.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -31,7 +32,7 @@ public class Goal implements Serializable{
 	public LocalDate updatedAt;
 	
 	@DBRef
-	public List<TransactionGoal> transactionGoals; 
+	public List<TransactionGoal> transactionGoals = new ArrayList<>();
 	
 	public Goal(String id, String title, double total, double saved, double recorrence, LocalDate createdAt,
 			LocalDate updatedAt, List<TransactionGoal> transactionGoals) {

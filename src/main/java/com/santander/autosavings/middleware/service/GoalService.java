@@ -24,13 +24,12 @@ public class GoalService {
 		return goalRepository.insert(goal);
 	}
 	
-	
-	public Goal saveGoal(Goal goal) {
-		return goalRepository.save(goal);
-	}
-	
 	public Goal findGoalById(String idGoal) {
 		return goalRepository.findById(idGoal).orElseThrow(() -> new ObjectNotFoundException(idGoal));
+	}
+
+	public Goal updateGoal(Goal goal) {
+		return goalRepository.save(goal);
 	}
 
 }
