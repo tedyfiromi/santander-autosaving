@@ -8,10 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootConfiguration()
 @SpringBootTest
 public class GoalTests {
-<<<<<<< HEAD
-
-
-=======
 	
 	@MockBean
 	private GoalService mockGoalService;
@@ -44,27 +40,26 @@ public class GoalTests {
 		when(mockGoalService.getListAllGoals()).thenReturn(listGoals);
 	}
 	
-//	@Test
-//	public void testGetListGoals() {		
-//		List<Goal> goals = mockGoalService.getListAllGoals();
-//		assertNotNull(goals);
-//		assertEquals(2, goals.size());
-//	}
+	@Test
+	public void testGetListGoals() {
+		List<Goal> goals = mockGoalService.getListAllGoals();
+		assertNotNull(goals);
+		assertEquals(2, goals.size());
+	}
 	
-//	@Test
-//	public void testListGoalsURIaccess() throws URISyntaxException
-//	{
-//	    RestTemplate restTemplate = new RestTemplate();
-//	     
-//	    final String baseUrl = UrlRest.URL_BASE + UrlRest.BASE + UrlRest.GOAL_LIST;
-//	    URI uri = new URI(baseUrl);
-//	 
-//	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
-//	    
-//	    assertEquals(200, result.getStatusCodeValue());
-//	    assertEquals(true, result.getBody().contains("id"));
-//	}
->>>>>>> 97a84b3d9bbdbdf9f922d5c12380451ba5187358
+	@Test
+	public void testListGoalsURIaccess() throws URISyntaxException
+	{
+	    RestTemplate restTemplate = new RestTemplate();
+
+	    final String baseUrl = UrlRest.URL_BASE + UrlRest.BASE + UrlRest.GOAL_LIST;
+	    URI uri = new URI(baseUrl);
+
+	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+
+	    assertEquals(200, result.getStatusCodeValue());
+	    assertEquals(true, result.getBody().contains("id"));
+	}
 	
 	@Test
 	public void testCreateGoal() {

@@ -8,16 +8,10 @@
 		<artifactId>autosaving</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-<<<<<<< HEAD
-	<artifactId>autosaving-transaction</artifactId>
-	<name>santander-autosaving</name>
-	<description>Microservice Transaction</description>
-=======
 
 	<artifactId>autosaving-goal</artifactId>
 	<name>santander-autosaving</name>
 	<description>Microservice Goal</description>
 
->>>>>>> 1824c655e9e776bcf3b7a60945d18eefb6de098e
 
 </project>
