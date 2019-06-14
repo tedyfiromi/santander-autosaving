@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.santander.autosavings.middleware.model.Goal;
@@ -57,5 +58,16 @@ public class GoalsController {
 		response.setData(goalService.insertGoal(goal));
 				
 		return ResponseEntity.ok(response);
+	}
+	
+	@ApiOperation(value="Get Goal By Id", response=String.class, notes="This operation find Goal by idGoal")
+	@PostMapping(value = UrlRest.FIND_GOAL_BY_ID)
+	@ApiResponses(value = {
+	        @ApiResponse(code = 200, message = "Successfully retrieved list"),
+	        @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+	        @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+	        @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")})
+	public ResponseEntity<Goal> getGoalById(@PathVariable("idGoal") String idGoal) {
+		return ResponseEntity.ok(goalService.findGoalById(idGoal));
 	}
 }

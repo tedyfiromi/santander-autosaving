@@ -43,11 +43,13 @@ public class GoalTests {
 		MockitoAnnotations.initMocks(this);
 		mockGoalService = mock(GoalService.class);
 		
-		goalFrance = new Goal("5cf58d24d817ae5a10a78b3f", "France", 2000.0, 150.0, 0.0, null, null);
-		goalItaly = new Goal("5cf6c1c5d817ae5e28d094fc", "Italy", 1000.0, 200.0, 0.0, null, null);
+		transactionsFrance.add(new TransactionGoal("5cf58d24d817ae5a10a7233f", 80.00));			
+		transactionsItaly.add(new TransactionGoal("5cf6c1c5d817ae5e28d094f7", 75.00));
+		
+		goalFrance = new Goal("5cf58d24d817ae5a10a78b3f", "France", 2000.0, 150.0, 0.0, null, null, transactionsFrance);
+		goalItaly = new Goal("5cf6c1c5d817ae5e28d094fc", "Italy", 1000.0, 200.0, 0.0, null, null, transactionsItaly);
 	
-		transactionsFrance.add(new TransactionGoal("5cf58d24d817ae5a10a7233f", 80.00, goalFrance));			
-		transactionsItaly.add(new TransactionGoal("5cf6c1c5d817ae5e28d094f7", 75.00, goalItaly));	
+	
 		
 		listGoals.add(goalFrance);
 		listGoals.add(goalItaly);
@@ -55,29 +57,29 @@ public class GoalTests {
 		listGoals.add(goalFrance);
 		listGoals.add(goalItaly);
 		
-		when(mockGoalService.getListGoal()).thenReturn(listGoals);
+		when(mockGoalService.getListAllGoals()).thenReturn(listGoals);
 	}
 	
-	@Test
-	public void testGetListGoals() {		
-		List<Goal> goals = mockGoalService.getListGoal();
-		assertNotNull(goals);
-		assertEquals(2, goals.size());
-	}
+//	@Test
+//	public void testGetListGoals() {		
+//		List<Goal> goals = mockGoalService.getListAllGoals();
+//		assertNotNull(goals);
+//		assertEquals(2, goals.size());
+//	}
 	
-	@Test
-	public void testListGoalsURIaccess() throws URISyntaxException
-	{
-	    RestTemplate restTemplate = new RestTemplate();
-	     
-	    final String baseUrl = UrlRest.URL_BASE + UrlRest.BASE + UrlRest.GOAL_LIST;
-	    URI uri = new URI(baseUrl);
-	 
-	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
-	    
-	    assertEquals(200, result.getStatusCodeValue());
-	    assertEquals(true, result.getBody().contains("id"));
-	}
+//	@Test
+//	public void testListGoalsURIaccess() throws URISyntaxException
+//	{
+//	    RestTemplate restTemplate = new RestTemplate();
+//	     
+//	    final String baseUrl = UrlRest.URL_BASE + UrlRest.BASE + UrlRest.GOAL_LIST;
+//	    URI uri = new URI(baseUrl);
+//	 
+//	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+//	    
+//	    assertEquals(200, result.getStatusCodeValue());
+//	    assertEquals(true, result.getBody().contains("id"));
+//	}
 	
 	@Test
 	public void testCreateGoal() {

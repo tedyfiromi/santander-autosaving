@@ -1,4 +1,4 @@
-package com.santander.autosavings.middleware.config;
+package com.santander.autosavings.middleware;
 
 import org.springframework.context.annotation.Configuration;
 

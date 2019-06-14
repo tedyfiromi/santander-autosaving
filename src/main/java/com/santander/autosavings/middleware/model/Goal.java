@@ -13,8 +13,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Document
 public class Goal implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -839854161900593105L;
 	@Id
 	public String id;
 	public String title;
