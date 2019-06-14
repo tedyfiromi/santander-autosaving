@@ -1,28 +1,8 @@
 package santander.autosavings.middleware;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
-
-import com.santander.autosavings.middleware.model.Goal;
-import com.santander.autosavings.middleware.model.TransactionGoal;
-import com.santander.autosavings.middleware.service.GoalService;
-import com.santander.autosavings.middleware.utils.UrlRest;
 
 
 @SpringBootConfiguration()
@@ -60,26 +40,26 @@ public class GoalTests {
 		when(mockGoalService.getListAllGoals()).thenReturn(listGoals);
 	}
 	
-//	@Test
-//	public void testGetListGoals() {		
-//		List<Goal> goals = mockGoalService.getListAllGoals();
-//		assertNotNull(goals);
-//		assertEquals(2, goals.size());
-//	}
+	@Test
+	public void testGetListGoals() {
+		List<Goal> goals = mockGoalService.getListAllGoals();
+		assertNotNull(goals);
+		assertEquals(2, goals.size());
+	}
 	
-//	@Test
-//	public void testListGoalsURIaccess() throws URISyntaxException
-//	{
-//	    RestTemplate restTemplate = new RestTemplate();
-//	     
-//	    final String baseUrl = UrlRest.URL_BASE + UrlRest.BASE + UrlRest.GOAL_LIST;
-//	    URI uri = new URI(baseUrl);
-//	 
-//	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
-//	    
-//	    assertEquals(200, result.getStatusCodeValue());
-//	    assertEquals(true, result.getBody().contains("id"));
-//	}
+	@Test
+	public void testListGoalsURIaccess() throws URISyntaxException
+	{
+	    RestTemplate restTemplate = new RestTemplate();
+
+	    final String baseUrl = UrlRest.URL_BASE + UrlRest.BASE + UrlRest.GOAL_LIST;
+	    URI uri = new URI(baseUrl);
+
+	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+
+	    assertEquals(200, result.getStatusCodeValue());
+	    assertEquals(true, result.getBody().contains("id"));
+	}
 	
 	@Test
 	public void testCreateGoal() {
