@@ -8,90 +8,103 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.santander.autosavings.middleware.model.AddMoneyObject;
+import com.santander.autosavings.middleware.model.OperationVO;
 import com.santander.autosavings.middleware.model.Goal;
 import com.santander.autosavings.middleware.model.TransactionGoal;
 import com.santander.autosavings.middleware.repository.TransactionGoalRepository;
 
 @Service
 public class TransactionGoalService {
-	
 
 	@Autowired
 	private TransactionGoalRepository transactGoalRepository;
-	
-	public final static String URI_GOALS = "http://localhost:8090/santander/goal/list";
+
 	public final static String GOAL_BY_ID = "http://localhost:8090/santander/goal/{id}";
-	public final static String GOAL_CREATE = "http://localhost:8090/santander/goal/create";
+	public final static String GOAL_UPDATE = "http://localhost:8090/santander/goal/update";
+	public List<TransactionGoal> listTransactions = new ArrayList<>();
+	public TransactionGoal transaction;
+	public TransactionGoal transactioned;
 	
-//	@Autowired
-//	private GoalService goalService;
-	
-	
-		public TransactionGoal addMoney(AddMoneyObject addTransaction) {		
-		
-		double addValue = addTransaction.getAddValue();
-		String account = addTransaction.getAccount();
-		
-		if (amountIsAvailable(addValue, account)) {	
-			
-			Goal goal = clientGoalById(addTransaction);
-			
-			double salvedMoney = goal.getSaved();
-			
-			List<TransactionGoal> listTransactions;
-			TransactionGoal transact = new TransactionGoal();
-			
-			listTransactions = listTransactionsNeverNull(goal.getTransactionGoals());	
-			
-			transact.setAccount(account);
-			transact.setValue(addValue);
-			
-			TransactionGoal transaction = transactGoalRepository.save(transact);			
-			listTransactions.add(transaction);
-			
-			goal.setSaved(sumAddValue(salvedMoney, addValue));
-			
-			goal.setTransactionGoal(listTransactions);			
-			
-			clientSaveGoal(goal);
-			
-			return transaction;
+
+	public TransactionGoal addMoney(final OperationVO operation) {
+
+		if (amountIsAvailable(operation.getValue(), operation.getAccount())) {
+
+			Goal goal = clientGoalById(operation);
+			saveTransaction(operation.getValue());
+
+			clientUpdateGoal(addInGoal(goal, operation));
+
+			return transactioned;
 		}
 		return null;
 	}
 
+	public TransactionGoal withDrawMoney(final OperationVO operation) {
+
+		if (amountIsAvailable(operation.getValue(), operation.getAccount())) {
+
+			Goal goal = clientGoalById(operation);
+			saveTransaction(operation.getValue());
+
+			clientUpdateGoal(withDrawInGoal(goal, operation));
+
+			return transactioned;
+		}
+		return null;
+
+	}
+	
+	public Goal addInGoal(Goal goal, OperationVO operation) {
+		goal.setSaved(calcAdd(goal.getSaved(), operation.getValue()));
+		goal.setTransactionGoal(listTransactions);
+		return goal;
+	}
+
+	public Goal withDrawInGoal(Goal goal, OperationVO operation) {
+		goal.setSaved(calcWithDraw(goal.getSaved(), operation.getValue()));
+		goal.setTransactionGoal(listTransactions);
+		return goal;
+	}
+
+	public void saveTransaction(double value) {
+		transaction = new TransactionGoal();
+		transaction.setValue(value);
+		
+		transactioned = new TransactionGoal();
+		transactioned = transactGoalRepository.save(transaction);
+		
+		listTransactions.add(transactioned);
+	}
+
 	public double totalAmount(String acount) {
-
 		double available = 5000.00;
-
 		return available;
 	}
-	
-	public double sumAddValue(double salvedMoney, double addValue) {
-		return salvedMoney = salvedMoney + addValue;
+
+	public double calcAdd(double salvedMoney, double addValue) {
+		return salvedMoney += addValue;
 	}
-	
-	public boolean amountIsAvailable(double addValue, String account) {		
+
+	public double calcWithDraw(double salvedMoney, double withDraw) {
+		return salvedMoney -= withDraw;
+	}
+
+	public boolean amountIsAvailable(double addValue, String account) {
 		return totalAmount(account) > addValue;
 	}
-	
-	public List<TransactionGoal> listTransactionsNeverNull(List<TransactionGoal> listTransactions) {
-		return listTransactions == null?new ArrayList<>():listTransactions;
-	}
-	
-	public Goal clientGoalById(AddMoneyObject addTransaction) {	
+
+	public Goal clientGoalById(OperationVO addTransaction) {
 		HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("id", addTransaction.getIdGoal());
-		
+		params.put("id", addTransaction.getIdGoal());
+
 		RestTemplate restTempGoalId = new RestTemplate();
-		return restTempGoalId.getForObject(GOAL_BY_ID, Goal.class, params);	
+		return restTempGoalId.getForObject(GOAL_BY_ID, Goal.class, params);
 	}
-	
-	public Goal clientSaveGoal(Goal goal) {		
+
+	public Goal clientUpdateGoal(Goal goal) {
 		RestTemplate restTempGoalId = new RestTemplate();
-		return restTempGoalId.postForObject(GOAL_CREATE, goal, Goal.class);	
+		return restTempGoalId.postForObject(GOAL_UPDATE, goal, Goal.class);
 	}
-	
 
 }

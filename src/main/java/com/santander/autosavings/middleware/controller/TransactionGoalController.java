@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.santander.autosavings.middleware.model.AddMoneyObject;
+import com.santander.autosavings.middleware.model.OperationVO;
 import com.santander.autosavings.middleware.model.Goal;
 import com.santander.autosavings.middleware.model.TransactionGoal;
 import com.santander.autosavings.middleware.service.TransactionGoalService;
@@ -30,31 +30,16 @@ public class TransactionGoalController {
 	@Autowired
 	public TransactionGoalService transactionGoalService;
 	
-//	@ApiOperation(value="Post add money transaction", response=String.class, notes="This operation save in mongodb a new transaction")
-//	@PostMapping(value=ADD_MONEY)
-//	@ApiResponses(value = {
-//	        @ApiResponse(code = 200, message = "Successfully retrieved list"),
-//	        @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-//	        @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-//	        @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")})
-//	public ResponseEntity<TransactionGoal> addMoney(
-//			@RequestParam("account") String account, 
-//			@RequestParam("idGoal") String idGoal,
-//			@RequestParam("addValue") double addValue) {		
-//		return ResponseEntity.ok(transactionGoalService.addMoney(account, idGoal, addValue)); 
-//	}
-	
-	@ApiOperation(value="Post add money transaction", response=String.class, notes="This operation save in mongodb a new transaction")
+	@ApiOperation(value="Post Add money transaction", response=String.class, notes="This operation save in mongodb a new transaction")
 	@PostMapping(value=ADD_MONEY)
-	public TransactionGoal addMoney(@RequestBody AddMoneyObject transactionGoal){			
-		return transactionGoalService.addMoney(transactionGoal);
-	}
+	public TransactionGoal addMoney(@RequestBody OperationVO operation){
+		return transactionGoalService.addMoney(operation);
+	}	
 	
-	
+	@ApiOperation(value="Post WithDraw money transaction", response=String.class, notes="This operation save in mongodb a new transaction")
 	@PostMapping(value=WITHDRAW_MONEY)
-	public void withDrawMoney() {
-		
-		
+	public TransactionGoal withDrawMoney(@RequestBody OperationVO operation) {
+		return transactionGoalService.withDrawMoney(operation);		
 	}	
 
 }

@@ -10,6 +10,6 @@
 	</parent>
 	<artifactId>autosaving-transaction</artifactId>
 	<name>santander-autosaving</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Microservice Transaction</description>
 
 </project>
