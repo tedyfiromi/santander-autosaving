@@ -1,17 +1,17 @@
 package com.santander.autosavings.middleware.model;
 
-public class AddMoneyObject {
+public class OperationVO {
 	
 	public String account;
 	public String idGoal;
-	public double addValue;
+	public double value;
 	
 	
-	public AddMoneyObject(String account, String idGoal, double addValue) {
+	public OperationVO(String account, String idGoal, double addValue) {
 		super();
 		this.account = account;
 		this.idGoal = idGoal;
-		this.addValue = addValue;
+		this.value = addValue;
 	}
 	public String getAccount() {
 		return account;
@@ -25,11 +25,11 @@ public class AddMoneyObject {
 	public void setIdGoal(String idGoal) {
 		this.idGoal = idGoal;
 	}
-	public double getAddValue() {
-		return addValue;
+	public double getValue() {
+		return value;
 	}
-	public void setAddValue(double addValue) {
-		this.addValue = addValue;
+	public void setValue(double addValue) {
+		this.value = addValue;
 	}	
 
 }
